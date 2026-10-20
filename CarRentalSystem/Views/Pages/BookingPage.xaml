@@ -1,0 +1,102 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.BookingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Оформление заказа">
+
+    <Grid Background="{DynamicResource BgWindow}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="{DynamicResource BgCard}" Margin="20" CornerRadius="8" BorderBrush="{DynamicResource BrushBorder}" BorderThickness="1" Padding="20">
+            <StackPanel>
+                <Button Content="⬅ Назад" HorizontalAlignment="Left" Width="100" Height="30" Click="BtnBack_Click"/>
+
+                <TextBlock Name="TxtCarInfo" Text="Оформление: Марка Модель" FontSize="20" FontWeight="Bold" Margin="0,15,0,20" Foreground="{DynamicResource TextPrimary}"/>
+
+                <TextBlock Text="Дата начала аренды *" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                <DatePicker Name="PickerStart" Height="35" SelectedDateChanged="DatesOrServices_Changed"/>
+
+                <TextBlock Text="Дата окончания аренды *" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                <DatePicker Name="PickerEnd" Height="35" SelectedDateChanged="DatesOrServices_Changed"/>
+
+                <Border BorderBrush="{DynamicResource BrushBorder}" BorderThickness="0,0,0,1" Margin="0,20,0,10" Padding="0,0,0,5">
+                    <TextBlock Text="ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ" FontWeight="Bold" Foreground="{DynamicResource BgPanelAccent}" FontSize="12"/>
+                </Border>
+
+                <CheckBox Name="CheckChildSeat" Content="Детское кресло (+500 ₽/сут)" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="DatesOrServices_Changed" Unchecked="DatesOrServices_Changed"/>
+                <CheckBox Name="CheckNavigator" Content="GPS-Навигатор (+300 ₽/сут)" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="DatesOrServices_Changed" Unchecked="DatesOrServices_Changed"/>
+                <CheckBox Name="CheckInsurance" Content="Полная КАСКО страховка (+1 000 ₽/сут)" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="DatesOrServices_Changed" Unchecked="DatesOrServices_Changed"/>
+
+                <Border Background="{DynamicResource BgWindow}" CornerRadius="5" Padding="15" Margin="0,25,0,0" BorderBrush="{DynamicResource BrushBorder}" BorderThickness="1">
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Text="Итого дней:" Foreground="{DynamicResource TextSecondary}"/>
+                            <TextBlock Name="TxtTotalDays" Text="0 дней" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Right">
+                            <TextBlock Text="Общая стоимость:" Foreground="{DynamicResource TextSecondary}" TextAlignment="Right"/>
+                            <TextBlock Name="TxtTotalCost" Text="0,00 ₽" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource CarItemTypeColor}" TextAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Background="{DynamicResource BgCard}" Margin="0,20,20,20" CornerRadius="8" BorderBrush="{DynamicResource BrushBorder}" BorderThickness="1" Padding="20">
+            <Grid>
+                <StackPanel Name="PaymentPanel">
+                    <TextBlock Text="💳 ВЫБОР СПОСОБА ОПЛАТЫ" FontWeight="Bold" FontSize="16" Margin="0,0,0,15" HorizontalAlignment="Center" Foreground="{DynamicResource TextPrimary}"/>
+
+                    <RadioButton Name="RadioCard" Content="Банковская карта онлайн" GroupName="PayMethod" IsChecked="True" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="PayMethod_Changed"/>
+                    <RadioButton Name="RadioSbp" Content="Система быстрых платежей (СБП)" GroupName="PayMethod" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="PayMethod_Changed"/>
+                    <RadioButton Name="RadioOffice" Content="Оплата при получении (в офисе)" GroupName="PayMethod" Margin="0,5" Foreground="{DynamicResource TextPrimary}" Checked="PayMethod_Changed"/>
+
+                    <StackPanel Name="CardDetailsBlock" Margin="0,15,0,0" Visibility="Visible">
+                        <TextBlock Text="Номер карты *" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                        <TextBox Name="TxtCardNumber" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="19" TextChanged="TxtCardNumber_TextChanged"/>
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,0,5,0">
+                                <TextBlock Text="Срок действия *" Foreground="{DynamicResource FormLabelText}" Margin="0,0,0,2"/>
+                                <TextBox Name="TxtCardExpiry" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="5" TextChanged="TxtCardExpiry_TextChanged"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                                <TextBlock Text="CVC / CVV *" Foreground="{DynamicResource FormLabelText}" Margin="0,0,0,2"/>
+                                <PasswordBox Name="TxtCardCvc" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="3"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Владелец карты (LATIN) *" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                        <TextBox Name="TxtCardHolder" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="30"/>
+                    </StackPanel>
+
+                    <StackPanel Name="SbpQrBlock" Margin="0,15,0,0" Visibility="Collapsed">
+                        <TextBlock Text="Сканируйте QR-код в приложении банка:" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="{DynamicResource TextSecondary}" FontWeight="SemiBold"/>
+                        <Border BorderBrush="{DynamicResource BrushBorder}" BorderThickness="2" Width="180" Height="180" HorizontalAlignment="Center" Background="White" Padding="5">
+                            <UniformGrid Name="QrUniformGrid" Rows="15" Columns="15"/>
+                        </Border>
+                        <TextBlock Text="⏳ Код обновится при смене параметров" FontSize="11" Foreground="{DynamicResource BrushMuted}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Button Name="BtnPayAndBook" Content="Подтвердить и оформить" Height="45" Margin="0,35,0,0" Background="{DynamicResource BgPanelAccent}" Foreground="White" FontWeight="Bold" FontSize="14" Click="BtnPayAndBook_Click"/>
+                </StackPanel>
+
+                <StackPanel Name="LoadingPanel" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ProgressBar IsIndeterminate="True" Width="200" Height="15" Margin="0,0,0,10"/>
+                    <TextBlock Name="TxtLoadingStatus" Text="Проверка parameters..." Foreground="{DynamicResource TextSecondary}" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,42 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.AdminOrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Админ - Отчет">
+
+    <Grid Background="{DynamicResource BgWindow}">
+        <Grid Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid Name="GridAllOrders" Grid.Column="0" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,15,0" GridLinesVisibility="Horizontal" Style="{DynamicResource {x:Type DataGrid}}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding ID_Order}" Width="40"/>
+                    <DataGridTextColumn Header="Клиент" Binding="{Binding ClientName}" Width="150"/>
+                    <DataGridTextColumn Header="Автомобиль" Binding="{Binding CarBrand}" Width="140"/>
+                    <DataGridTextColumn Header="Начало" Binding="{Binding StartDate, StringFormat={}{0:dd.MM.yyyy}}" Width="95"/>
+                    <DataGridTextColumn Header="Окончание" Binding="{Binding EndDate, StringFormat={}{0:dd.MM.yyyy}}" Width="95"/>
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding TotalCost, StringFormat={}{0:C}}" Width="100"/>
+                    <DataGridTextColumn Header="Статус заказа" Binding="{Binding StatusName}" Width="110"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Border Grid.Column="1" Background="{DynamicResource BgCard}" CornerRadius="6" BorderBrush="{DynamicResource BrushBorder}" BorderThickness="1" Padding="15" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="ЭКСПОРТ ОТЧЕТНОСТИ" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,15" Foreground="{DynamicResource TextPrimary}"/>
+                    <TextBlock Text="Выгрузка финансового реестра договоров за всё время:" TextWrapping="Wrap"  Foreground="{DynamicResource TextSecondary}" Margin="0,0,0,20" FontSize="12" TextAlignment="Center"/>
+
+                    <Button Content="Выгрузить в MS Word (.docx)" Height="38" Margin="0,5" Click="BtnExportWord_Click"/>
+                    <Button Content="Выгрузить в MS Excel (.xlsx)" Height="38" Margin="0,5" Background="{DynamicResource BgPanelAccent}" Click="BtnExportExcel_Click"/>
+                    <Button Content="Выгрузить в Adobe PDF (.pdf)" Height="38" Margin="0,5" Background="{DynamicResource BrushDanger}" Click="BtnExportPdf_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,86 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.MainPageNavigator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      Title="Навигатор">
+
+    <Grid Background="{DynamicResource BgWindow}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Name="TopNavBar" Background="{DynamicResource BgPanel}" Padding="15,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,30,0">
+
+                    <Border Width="34" 
+            Height="32" 
+            Background="White" 
+            CornerRadius="6" 
+            Padding="3"
+            VerticalAlignment="Center"
+            Margin="0,0,10,0"
+            SnapsToDevicePixels="True">
+
+                        <Image Source="/res/images/logo.png" 
+               Stretch="Uniform" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+                    </Border>
+
+                    <TextBlock Name="TxtRoleTitle" 
+               Text="СЕРВИС АРЕНДЫ" 
+               Foreground="{DynamicResource TextLight}" 
+               FontSize="15" 
+               FontWeight="Bold" 
+               VerticalAlignment="Center"/>
+                </StackPanel>
+
+
+                <WrapPanel Grid.Column="1" VerticalAlignment="Center">
+
+                    <WrapPanel Name="PanelAdminButtons" Visibility="Collapsed">
+                        <Button Content="Статистика" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnAdminAnalytics_Click"/>
+                        <Button Content="Автопарк" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnAdminCars_Click"/>
+                        <Button Content="Персонал" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnAdminStaff_Click"/>
+                        <Button Content="Все Аренды" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnAdminOrders_Click"/>
+                        <Button Content="Каталог авто" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientCatalog_Click"/>
+                        <Button Content="Мой профиль" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientProfile_Click"/>
+                        <Button Content="Активный прокат" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnActiveMonitor_Click"/>
+                    </WrapPanel>
+
+                    <WrapPanel Name="PanelManagerButtons" Visibility="Collapsed">
+                        <Button Content="Модерация заявок" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnManagerOrders_Click"/>
+                        <Button Content="Возврат авто" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnManagerReturns_Click"/>
+                        <Button Content="Каталог авто" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientCatalog_Click"/>
+                        <Button Content="Мой профиль" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientProfile_Click"/>
+                        <Button Content="Активный прокат" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnActiveMonitor_Click"/>
+                    </WrapPanel>
+
+                    <WrapPanel Name="PanelClientButtons" Visibility="Collapsed">
+                        <Button x:Name="BtnCatalog" Content="Каталог автомобилей" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientCatalog_Click"/>
+                        <Button x:Name="BtnProfile" Content="Личный кабинет" Width="Auto" Height="32" Margin="0,4,8,4" Click="BtnClientProfile_Click"/>
+                    </WrapPanel>
+
+                </WrapPanel>
+
+                <Button Grid.Column="2" Content="Выйти" Width="Auto" Height="32" VerticalAlignment="Center" Margin="5,0,5,0" Background="{DynamicResource BrushDanger}" Foreground="White" FontWeight="SemiBold" Click="BtnLogout_Click"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Frame Name="MainNavigatorFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Page>

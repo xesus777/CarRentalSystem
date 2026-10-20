@@ -1,0 +1,77 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация">
+
+    <Grid Background="{DynamicResource BgWindow}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Margin="0,20,0,20">
+
+                <TextBlock Text="РЕГИСТРАЦИЯ" FontSize="26" FontWeight="Bold" 
+                           HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="{DynamicResource TextPrimary}"/>
+
+                <Border BorderBrush="{DynamicResource BrushBorder}" BorderThickness="0,0,0,1" Margin="0,0,0,15" Padding="0,0,0,10">
+                    <TextBlock Text="Данные учетной записи" FontWeight="SemiBold" Foreground="{DynamicResource BgPanelAccent}"/>
+                </Border>
+
+                <TextBlock Text="Логин *" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                <TextBox Name="TxtRegLogin" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="30"/>
+
+                <TextBlock Text="Пароль *" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                <PasswordBox Name="TxtRegPassword" Height="35" VerticalContentAlignment="Center" Padding="5,0"/>
+
+                <TextBlock Text="Повторите пароль *" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                <PasswordBox Name="TxtRegPasswordConfirm" Height="35" VerticalContentAlignment="Center" Padding="5,0"/>
+
+                <Border BorderBrush="{DynamicResource BrushBorder}" BorderThickness="0,0,0,1" Margin="0,20,0,15" Padding="0,0,0,10">
+                    <TextBlock Text="Персональные данные клиента" FontWeight="SemiBold" Foreground="{DynamicResource BgPanelAccent}"/>
+                </Border>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,5,0">
+                        <TextBlock Text="Фамилия *" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                        <TextBox Name="TxtLastName" Height="35" VerticalContentAlignment="Center" Padding="5,0" PreviewTextInput="TxtLettersOnly_PreviewTextInput"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                        <TextBlock Text="Имя *" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                        <TextBox Name="TxtFirstName" Height="35" VerticalContentAlignment="Center" Padding="5,0" PreviewTextInput="TxtLettersOnly_PreviewTextInput"/>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="Отчество (при наличии)" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                <TextBox Name="TxtMiddleName" Height="35" VerticalContentAlignment="Center" Padding="5,0" PreviewTextInput="TxtLettersOnly_PreviewTextInput"/>
+
+                <TextBlock Text="Номер телефона *" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                <TextBox Name="TxtPhone" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="18" PreviewTextInput="TxtDigitsOnly_PreviewTextInput" TextChanged="TxtPhone_TextChanged"/>
+
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,5,0">
+                        <TextBlock Text="Паспорт (Серия Номер) *" Foreground="{DynamicResource FormLabelText}" Margin="0,0,0,2"/>
+                        <TextBox Name="TxtPassport" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="11" PreviewTextInput="TxtDigitsOnly_PreviewTextInput" TextChanged="TxtPassport_TextChanged"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                        <TextBlock Text="Вод. удостоверение *" Foreground="{DynamicResource FormLabelText}" Margin="0,0,0,2"/>
+                        <TextBox Name="TxtDriverLicense" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="11" PreviewTextInput="TxtDigitsOnly_PreviewTextInput" TextChanged="TxtDriverLicense_TextChanged"/>
+                    </StackPanel>
+                </Grid>
+
+                <Button Name="BtnDoRegister" Content="Зарегистрироваться" Height="40" Margin="0,30,0,0" Background="{DynamicResource BgPanelAccent}" Foreground="White" FontWeight="Bold" Click="BtnDoRegister_Click"/>
+                <Button Name="BtnBack" Content="Назад к авторизации" Height="30" Margin="0,10,0,0" Background="{DynamicResource BrushMuted}" Click="BtnBack_Click"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

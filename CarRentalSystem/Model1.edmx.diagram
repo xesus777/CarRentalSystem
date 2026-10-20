@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe61197b44f94ad6a798fd8d909c4d80" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalDBModel.CarCategories" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Cars" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.CarStatuses" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Clients" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Orders" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.OrderStatuses" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Payments" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.PaymentStatuses" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.PaymentTypes" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Roles" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Users" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Cars_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Cars_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Orders_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Clients_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Orders_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Orders_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Payments_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Payments_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Payments_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CarRentalDBModel.StaffStatuses" Width="1.5" PointX="7.375" PointY="9.875" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Users_StaffStatuses" />
+        <AssociationConnector Association="CarRentalDBModel.FK_Orders_Managers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

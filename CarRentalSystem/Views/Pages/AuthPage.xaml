@@ -1,0 +1,41 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Авторизация">
+    <Grid Background="{DynamicResource BgWindow}">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+
+            <TextBlock Text="АВТОРИЗАЦИЯ" FontSize="26" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,25" Foreground="{DynamicResource TextPrimary}"/>
+
+            <TextBlock Name="labelLogin" Text="Логин" Margin="0,5,0,2" Foreground="{DynamicResource FormLabelText}"/>
+            <Grid>
+                <TextBox Name="TextBoxLogin" Height="35" VerticalContentAlignment="Center" Padding="5,0" MaxLength="30"/>
+                <TextBlock Name="txtHintLogin" Text="Введите логин" Foreground="{DynamicResource BrushMuted}" IsHitTestVisible="False" VerticalAlignment="Center" Margin="8,0,0,0"/>
+            </Grid>
+
+            <TextBlock Name="labelPass" Text="Пароль" Margin="0,10,0,2" Foreground="{DynamicResource FormLabelText}"/>
+            <Grid>
+                <PasswordBox Name="PasswordBox" Height="35" VerticalContentAlignment="Center" Padding="5,0"/>
+                <TextBlock Name="txtHintPass" Text="Введите пароль" Foreground="{DynamicResource BrushMuted}" IsHitTestVisible="False" VerticalAlignment="Center" Margin="8,0,0,0"/>
+            </Grid>
+
+            <Button Name="ButtonEnter" Content="Войти в систему" Height="40" Margin="0,25,0,0"  Click="ButtonEnter_Click"/>
+
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="ButtonChangePassword" Content="Войти как гость" Height="30" Margin="0,0,5,0" Background="{DynamicResource BrushMuted}" Click="ButtonGuest_Click"/>
+                <Button Name="ButtonReg" Content="Регистрация" Height="30" Grid.Column="1" Margin="5,0,0,0" Background="{DynamicResource BgPanelAccent}" Click="ButtonReg_Click"/>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

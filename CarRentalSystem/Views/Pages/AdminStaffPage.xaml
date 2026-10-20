@@ -1,0 +1,56 @@
+﻿<Page x:Class="CarRentalSystem.Views.Pages.AdminStaffPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRentalSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Админ - сотрудники">
+
+    <Grid Background="{DynamicResource BgWindow}">
+        <Grid Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320"/>
+            </Grid.ColumnDefinitions>
+
+            <ListView Name="ListStaff" Grid.Column="0" Margin="0,0,15,0" HorizontalContentAlignment="Stretch" Background="{DynamicResource BgCard}" BorderBrush="{DynamicResource BrushBorder}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="{DynamicResource BrushBorder}" BorderThickness="0,0,0,1" Padding="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Login}" FontSize="15" FontWeight="Bold" Foreground="{DynamicResource TextPrimary}"/>
+                                    <TextBlock Text="Роль: Менеджер" FontSize="12" Foreground="{DynamicResource CarItemSecondaryText}"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="{Binding StatusName}" FontWeight="Bold" VerticalAlignment="Center" 
+                                           Foreground="{Binding StatusColor}"/>
+                                <Button Grid.Column="2" Content="🔄 Сменить статус" Padding="8,4" Tag="{Binding ID_User}" Click="BtnToggleStatus_Click"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Border Grid.Column="1" Background="{DynamicResource BgCard}" CornerRadius="6" BorderBrush="{DynamicResource BrushBorder}" BorderThickness="1" Padding="15" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="РЕДАКТИРОВАНИЕ СОТРУДНИКА" FontWeight="Bold" Margin="0,0,0,15" HorizontalAlignment="Center" Foreground="{DynamicResource TextPrimary}"/>
+
+                    <TextBlock Text="Логин нового менеджера:" Foreground="{DynamicResource FormLabelText}" Margin="0,5,0,2"/>
+                    <TextBox Name="TxtStaffLogin" Height="32" VerticalContentAlignment="Center"/>
+
+                    <TextBlock Text="Пароль учетной записи:" Foreground="{DynamicResource FormLabelText}" Margin="0,10,0,2"/>
+                    <TextBox Name="TxtStaffPassword" Height="32" VerticalContentAlignment="Center"/>
+
+                    <Button Content="Зарегистрировать менеджера" Height="38" Margin="0,25,0,0" Background="{DynamicResource BgPanelAccent}" Foreground="White" FontWeight="Bold" Click="BtnCreateStaff_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
